@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DbModels-Web.config Connection String" description="DbModels A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="data source=alabdb01.database.windows.net;initial catalog=TDLDB01;persist security info=True;user id=tdlApp;password=tdl@pp1234;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Projetos\\LAB\\TDL-API\\TDL-API\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DbModels']/@connectionString" />
+  </parameter>
+</parameters>

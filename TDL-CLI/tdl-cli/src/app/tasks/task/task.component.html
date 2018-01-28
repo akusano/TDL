@@ -1,0 +1,22 @@
+
+    <table >
+      <tbody>
+        <tr>
+           <td style="padding-right:10px;">
+             <i class="fa fa-2x fa-check-square-o" *ngIf="task.Done; else elseBlock" (click)="taskToggle()"></i>
+             <ng-template #elseBlock>
+             <i class="fa fa-2x fa fa-square-o" (click)="taskToggle()" ></i>
+             </ng-template>
+           </td>
+            <td width="100%">
+              <h5 class="card-title "  >
+                <del *ngIf="task.Done; else elseBlockD" >{{task.Name}}</del>
+                <ng-template #elseBlockD>{{task.Name}}</ng-template>
+                <br>
+                <i class="small"> {{task.CreationDate | date: 'fullDate'}} </i>
+            </h5>
+          </td>
+            <td><button class="btn btn-danger" (click)="deleteTask()"><i class="fa fa-trash-o"></i></button></td>
+
+      </tbody>
+    </table>
