@@ -32,16 +32,12 @@ export class TasksComponent implements OnInit {
     .subscribe((r: Task) => {
       this.tasks.push(r);
     });
-
   }
 
   deleteTask(task: Task)
   {
     this.taskService.deleteTask(task.Id)
     .subscribe((r: Task) => {
- 
-
-
       this.refreshData();
     });
   }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {TDL_API} from './api.api'
 
 @Component({
   selector: 'tdl-root',
@@ -7,7 +6,5 @@ import {TDL_API} from './api.api'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-apiRef: string = TDL_API
 
 }
