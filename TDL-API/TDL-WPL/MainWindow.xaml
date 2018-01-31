@@ -9,9 +9,9 @@
 
     <Window.Resources>
         <Style x:Key="taskDone" TargetType="{x:Type TextBlock}">
-            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontStyle" Value="Italic" />
             <Style.Triggers>
-                <DataTrigger Binding="{Binding Done}"  Value="true">
+                <DataTrigger Binding="{Binding Done}" Value="true">
                     <Setter Property="TextDecorations" Value="strikethrough" />
                 </DataTrigger>
             </Style.Triggers>
@@ -19,15 +19,62 @@
     </Window.Resources>
 
 
+    <StackPanel Margin="10">
         <StackPanel Margin="10">
-        <StackPanel Margin="10"> 
             <Label FontWeight="Bold">Nova Tarefa</Label>
-            <TextBox Name="txtNewTask" KeyUp="TxtNewTask_OnKeyUp" ></TextBox>
+            <TextBox Name="txtNewTask" KeyUp="TxtNewTask_OnKeyUp" />
         </StackPanel>
 
         <StackPanel Margin="10">
             <Label FontWeight="Bold">Minhas Tarefa</Label>
-            <ListView Name="lvTasks" Height="310"  >
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Visible"
+                VerticalScrollBarVisibility="Hidden">
+                <DataGrid ItemsSource="{Binding VMTasks}"
+                          AutoGenerateColumns="False" Height="300"
+                          GridLinesVisibility="None"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label>
+                                        <CheckBox IsChecked="{Binding Done}" CommandParameter="{Binding}"
+                                                  Click="ButtonBase_OnClick" />
+                                    </Label>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="" Width="550">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label>
+                                        <TextBlock Style="{StaticResource taskDone}" Text="{Binding Name}" />
+                                    </Label>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="" Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--<Button Margin="3"
+                                            Padding="3" 
+                                            CommandParameter="{Binding}"
+                                            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.DeleteTask}"
+                                            Content="Excluir"/>-->
+                                    <Button Margin="2" Name="btDeleteTask" Click="BtDeleteTask_OnClick"
+                                            CommandParameter="{Binding}">
+                                        Excluir
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </ScrollViewer>
+
+            <!--<ListView Name="lvTasks" Height="310" DataContext="{Binding Tasks}" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="" Width="50">
@@ -55,9 +102,9 @@
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
-            </ListView>
+            </ListView>-->
         </StackPanel>
-        <TextBlock Name="tbStatus" Margin="5" FontSize="9" FontStyle="Italic" Foreground="Gray"></TextBlock>
+        <TextBlock Margin="5" FontSize="9" FontStyle="Italic" Foreground="Gray" Text="{Binding Status}" />
     </StackPanel>
-   
+
 </Window>

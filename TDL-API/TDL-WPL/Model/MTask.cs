@@ -2,7 +2,6 @@
 
 namespace TDL_WPF.Model
 {
-
     public class MTask
     {
         public int Id { get; set; }
@@ -11,5 +10,4 @@ namespace TDL_WPF.Model
         public DateTime CreationDate { get; set; }
         public DateTime? ConclusionDate { get; set; }
     }
-
 }
